@@ -4,6 +4,17 @@
 
 > framework owns the contract, ecosystem owns the implementation.
 
+
+> GitHub：https://github.com/yabinlee3-sketch/dartjet
+
+## 已补齐能力（Phase 1 完成）
+
+- 默认数据库：InMemoryDatabaseProvider（DAO 工厂注册 + 表记录）
+- 权限服务：PermissionService + GrantedPermissionService 默认
+- SPI 配置：SpiConfig 工厂白名单 + XJet.applySpiConfig(json)
+- 全局错误：
+unZonedGuarded + FlutterError.onError + PlatformDispatcher.onError
+- 新闻 Demo：列表/详情/重试/离线兜底/**收藏写入数据库表**
 ## 特性
 
 - 单一包、单一入口：`XJet.init / register / override / get`

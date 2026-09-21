@@ -4,6 +4,15 @@
 > 规则：**发现映射困难必须记录，不允许静默改架构**。
 > 状态说明：每个问题给出“倾向方案 + 影响 + 待决策”。部分问题在 Phase 1 启动前需要确认，其余可在实现中按建议默认执行并在收尾时复核。
 
+
+## Phase 1 落地状态（更新于 2026-09-21）
+
+- Q1 状态机制：已按默认方案落地（ChangeNotifier + ValueListenable）。
+- Q3 路由：已按默认方案落地（Navigator 1.0 藏在 MaterialRouterProvider）。
+- Q4 数据库：已提供 InMemoryDatabaseProvider 默认实现（DAO 工厂注册 + 表访问）；磁盘持久化仍需自定义 Provider。
+- Q6 全局错误：已落地 runZonedGuarded + FlutterError.onError + PlatformDispatcher.onError。
+- Q8 SPI 配置：已落地 SpiConfig 工厂白名单 + XJet.applySpiConfig(json)；资产文件自动发现保留为自定义接入。
+- Q9 权限：已落地 PermissionService 默认 GrantedPermissionService，可 override 平台实现。
 ## Q1 响应式状态：ValueNotifier / ChangeNotifier / Stream
 
 Android 侧：`uiState: StateFlow<UiState>` + 业务 `StateFlow`（collect in lifecycle）。
