@@ -1,11 +1,11 @@
 import 'package:dart_jet/dart_jet.dart';
 import 'package:flutter/material.dart';
 
-import '../models/news_item.dart';
-import '../viewmodels/news_view_model.dart';
-import '../widgets/news_card.dart';
+import '../adapter/news_card.dart';
+import '../model/news_item.dart';
+import '../present/news_view_model.dart';
 
-/// 新闻列表页，对应 Android NewsListActivity + NewsListScreen。
+/// 新闻列表页，对应 Android ui/NewsListActivity.kt + ui/NewsListScreen.kt。
 class NewsListPage extends XPage<NewsViewModel> {
   final NewsViewModel Function()? vmFactory;
 
@@ -33,8 +33,10 @@ class _NewsListPageState extends XPageState<NewsViewModel> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(message ?? '网络不可用',
-                    style: Theme.of(context).textTheme.titleMedium),
+                Text(
+                  message ?? '网络不可用',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
                 const SizedBox(height: 16),
                 FilledButton(
                   onPressed: vm.loadRemote,

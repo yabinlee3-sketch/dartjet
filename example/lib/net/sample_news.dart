@@ -1,6 +1,6 @@
-import '../models/news_item.dart';
+import '../model/news_item.dart';
 
-/// 离线兜底数据，对应 Android SampleNews。
+/// 离线兜底数据，对应 Android net/SampleNews.kt。
 class SampleNews {
   static const List<NewsItem> items = [
     NewsItem(

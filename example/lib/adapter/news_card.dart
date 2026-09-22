@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../models/news_item.dart';
+import '../model/news_item.dart';
 
-/// 单张新闻卡片。
+/// 单张新闻卡片，对应 Android adapter/NewsCard.kt。
 class NewsCard extends StatelessWidget {
   final NewsItem item;
   final VoidCallback onTap;
@@ -28,11 +28,20 @@ class NewsCard extends StatelessWidget {
               const SizedBox(height: 8),
               Row(
                 children: [
-                  Text('@${item.by}', style: Theme.of(context).textTheme.bodySmall),
+                  Text(
+                    '@${item.by}',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
                   const SizedBox(width: 12),
-                  Text('▲ ${item.score}', style: Theme.of(context).textTheme.bodySmall),
+                  Text(
+                    '▲ ${item.score}',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
                   const SizedBox(width: 12),
-                  Text('${item.comments} 评论', style: Theme.of(context).textTheme.bodySmall),
+                  Text(
+                    '${item.comments} 评论',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
                 ],
               ),
             ],

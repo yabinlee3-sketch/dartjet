@@ -2,10 +2,11 @@ import 'dart:convert';
 
 import 'package:dart_jet/dart_jet.dart';
 
-import '../data/sample_news.dart';
-import '../models/news_item.dart';
+import '../kit/news_kit.dart';
+import '../model/news_item.dart';
+import 'sample_news.dart';
 
-/// 新闻数据层，对应 Android NewsRepository。
+/// 新闻数据层，对应 Android net/NewsRepository.kt。
 /// ViewModel 永远不知道数据来自网络还是离线兜底。
 class NewsRepository extends XRepository {
   Future<List<NewsItem>> fetchTop(int limit) {
@@ -23,8 +24,7 @@ class NewsRepository extends XRepository {
   List<NewsItem> sample() => SampleNews.items;
 
   Future<List<int>> _fetchIds() async {
-    final response =
-        await XJet.getText('https://news.ycombinator.com/v0/topstories.json');
+    final response = await XJet.getText(NewsKit.hnTopUrl);
     if (!response.isSuccess) {
       throw StateError('Hacker News responded ${response.status}');
     }
@@ -33,8 +33,7 @@ class NewsRepository extends XRepository {
   }
 
   Future<NewsItem?> _fetchItem(int id) async {
-    final response =
-        await XJet.getText('https://news.ycombinator.com/v0/item/$id.json');
+    final response = await XJet.getText('${NewsKit.hnItemUrl}/$id.json');
     if (!response.isSuccess) return null;
     final json = jsonDecode(response.bodyText) as Map<String, dynamic>;
     if (json['title'] == null) return null;

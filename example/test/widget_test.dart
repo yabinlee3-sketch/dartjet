@@ -1,10 +1,10 @@
 import 'package:dart_jet/dart_jet.dart';
-import 'package:dartjet_example/models/news_item.dart';
-import 'package:dartjet_example/pages/news_detail_page.dart';
-import 'package:dartjet_example/pages/news_list_page.dart';
-import 'package:dartjet_example/repositories/favorites_dao.dart';
-import 'package:dartjet_example/repositories/news_repository.dart';
-import 'package:dartjet_example/viewmodels/news_view_model.dart';
+import 'package:dartjet_example/model/news_item.dart';
+import 'package:dartjet_example/net/favorites_dao.dart';
+import 'package:dartjet_example/net/news_repository.dart';
+import 'package:dartjet_example/present/news_view_model.dart';
+import 'package:dartjet_example/ui/news_detail_page.dart';
+import 'package:dartjet_example/ui/news_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -26,8 +26,10 @@ void main() {
     vm.loadSample();
     await tester.pumpAndSettle();
     expect(find.text('DartJet 头条'), findsOneWidget);
-    expect(find.textContaining('DartJet：把 XJet 的开发思想带到 Flutter'),
-        findsOneWidget);
+    expect(
+      find.textContaining('DartJet：把 XJet 的开发思想带到 Flutter'),
+      findsOneWidget,
+    );
   });
 
   testWidgets('新闻列表错误态提供重试与离线入口', (tester) async {
@@ -61,7 +63,9 @@ void main() {
     final dao = FavoritesDao(InMemoryDatabaseProvider());
     const item = NewsItem(id: 1, title: '标题');
     await tester.pumpWidget(
-      MaterialApp(home: NewsDetailPage(item: item, favoritesDao: dao)),
+      MaterialApp(
+        home: NewsDetailPage(item: item, favoritesDao: dao),
+      ),
     );
     expect(find.text('收藏'), findsOneWidget);
     await tester.tap(find.text('收藏'));

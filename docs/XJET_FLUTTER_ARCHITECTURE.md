@@ -64,13 +64,14 @@ dartjet/                  # 单 package
 │   └── spi/                       # 可选 SPI 发现支持
 ├── example/                   # 新闻 Demo
 │   ├── lib/
-│   │   ├── main.dart
-│   │   ├── app_config.dart
-│   │   ├── models/news_item.dart
-│   │   ├── repositories/news_repository.dart
-│   │   ├── viewmodels/news_view_model.dart
-│   │   ├── pages/news_list_page.dart / news_detail_page.dart
-│   │   └── widgets/news_cards.dart
+│   │   ├── main.dart                 # 入口（等价 App.java）
+│   │   ├── app/news_app.dart         # 应用装配 + 根组件
+│   │   ├── kit/news_kit.dart         # 常量 / 路由信息 / 接口地址
+│   │   ├── model/news_item.dart      # 模型
+│   │   ├── net/                      # 数据仓库 + 离线兜底 + 收藏 DAO
+│   │   ├── present/news_view_model.dart  # ViewModel
+│   │   ├── ui/                       # 列表页 / 详情页
+│   │   └── adapter/news_card.dart    # 列表项组件
 │   └── assets/sample_news.json （可选）
 └── test/                      # 单测 + Widget 测试
 ```
@@ -330,4 +331,5 @@ Repository/Service 不做页面级状态，只有全局可替换实现。
 ## 13. 架构自检
 
 Phase 1 结束时按 `XJET_FLUTTER_MAPPING.md` 的一致性清单逐项打勾，并把无法对齐项写回 `XJET_FLUTTER_OPEN_QUESTIONS.md`。
+
 

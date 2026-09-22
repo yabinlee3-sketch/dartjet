@@ -1,9 +1,9 @@
 import 'package:dart_jet/dart_jet.dart';
 
-import '../models/news_item.dart';
-import '../repositories/news_repository.dart';
+import '../model/news_item.dart';
+import '../net/news_repository.dart';
 
-/// 新闻页面 ViewModel，对应 Android NewsViewModel。
+/// 新闻页面 ViewModel，对应 Android present/NewsViewModel.kt。
 class NewsViewModel extends XViewModel {
   final NewsRepository repository;
   final ListDataSource<NewsItem> items = ListDataSource<NewsItem>();
@@ -11,7 +11,7 @@ class NewsViewModel extends XViewModel {
   bool usingSample = false;
 
   NewsViewModel({NewsRepository? repository})
-      : repository = repository ?? NewsRepository();
+    : repository = repository ?? NewsRepository();
 
   @override
   void refresh() {

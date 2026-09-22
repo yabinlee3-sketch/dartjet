@@ -1,10 +1,10 @@
 import 'package:dart_jet/dart_jet.dart';
 import 'package:flutter/material.dart';
 
-import '../models/news_item.dart';
-import '../repositories/favorites_dao.dart';
+import '../model/news_item.dart';
+import '../net/favorites_dao.dart';
 
-/// 新闻详情页，对应 Android NewsDetailActivity + NewsDetailScreen。
+/// 新闻详情页，对应 Android ui/NewsDetailActivity.kt + ui/NewsDetailScreen.kt。
 /// 演示默认内存数据库：收藏状态写入 DatabaseProvider 的 favorites 表。
 class NewsDetailPage extends StatefulWidget {
   final NewsItem? item;
@@ -39,8 +39,10 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(news.title,
-                      style: Theme.of(context).textTheme.headlineSmall),
+                  Text(
+                    news.title,
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
                   const SizedBox(height: 12),
                   Text(
                     '@${news.by} · ▲ ${news.score} · ${news.comments} 评论',
